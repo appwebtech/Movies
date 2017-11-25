@@ -24,12 +24,21 @@ class MoviesController < ApplicationController
 		end
 	end
 
+	def edit
+
+	end
+
 	def update
-		
+		if @movie.update(josembi_koding_late)
+			redirect_to movie_path(@movie)
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
-		
+		@movie.destroy 
+		redirect_to root_path
 	end
 
 	private
