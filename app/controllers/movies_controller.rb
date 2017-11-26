@@ -10,11 +10,11 @@ class MoviesController < ApplicationController
 	end
 
 	def new
-		@movie = Movie.new
+		@movie = current_user.play.build
 	end
 
 	def create
-		@movie = Movie.new(josembi_koding_late)
+		@movie = current_user.play.build(josembi_koding_late)
 		if @movie.save
 			flash[:success] = "Movie Created successfully"
 			redirect_to root_path
