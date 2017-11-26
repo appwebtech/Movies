@@ -3,6 +3,7 @@
 
 	<%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select Category") %>
 
+	<%= mteja.file_field :avatar %>
   <%= mteja.input :title, label: "Movie Title" %>
   <%= mteja.input :description, label: "Movie Description" %>
   <%= mteja.input :director, label: "Director/s" %>

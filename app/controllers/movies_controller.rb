@@ -53,7 +53,7 @@ class MoviesController < ApplicationController
 	private
 
 	def josembi_koding_late
-		params.require(:movie).permit(:title, :description, :director, :category_id)
+		params.require(:movie).permit(:title, :description, :director, :category_id, :avatar)
 	end
 
 	def feeling_blessed

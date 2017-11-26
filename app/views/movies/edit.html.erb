@@ -2,7 +2,7 @@
 
 
 <%= simple_form_for @movie, html: {multipart: true} do |mteja| %>
-
+<%= mteja.file_field :avatar %>
 	<%= mteja.select :category_id, @categories %>
 
   <%= mteja.input :title, label: "Movie Title" %>
