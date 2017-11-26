@@ -1,5 +1,4 @@
 class MoviesController < ApplicationController
-#	before_action :josembi_koding_late (:index, :new)
 	before_action :feeling_blessed, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -11,24 +10,29 @@ class MoviesController < ApplicationController
 
 	def new
 		@movie = current_user.movies.build
+		@categories = Category.all.map{ |c| [c.name, c.id] }
 	end
 
 	def create
 		@movie = current_user.movies.build(josembi_koding_late)
+		@movie.category_id = params[:category_id]
+
 		if @movie.save
-			flash[:success] = "Movie Created successfully"
+	#		flash[:success] = "Movie Created successfully"
 			redirect_to root_path
 		else
-			flash[:primary] = "Something went wrong...."
+	#		flash[:primary] = "Something went wrong...."
 			render_new
 		end
 	end
 
 	def edit
-
+		@categories = Category.all.map{ |c| [c.name, c.id] }
 	end
 
 	def update
+		@movie.category_id = params[:category_id]
+
 		if @movie.update(josembi_koding_late)
 			redirect_to movie_path(@movie)
 		else
@@ -44,7 +48,7 @@ class MoviesController < ApplicationController
 	private
 
 	def josembi_koding_late
-		params.require(:movie).permit(:title, :description, :director)
+		params.require(:movie).permit(:title, :description, :director, :category_id)
 	end
 
 	def feeling_blessed

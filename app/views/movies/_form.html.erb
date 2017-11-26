@@ -1,5 +1,8 @@
 
 <%= simple_form_for @movie do |mteja| %>
+
+	<%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select Category") %>
+
   <%= mteja.input :title, label: "Movie Title" %>
   <%= mteja.input :description, label: "Movie Description" %>
   <%= mteja.input :director, label: "Director/s" %>
