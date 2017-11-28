@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
 	before_action :kamuthenya_kafoca
+	before_action :november_is_gone, only: [:edit, :update, :destroy]
 
 	def new
 		@review = Review.new
@@ -17,6 +18,22 @@ class ReviewsController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+
+	def update
+		if @review.update(kamuthenya)
+			redirect_to movie_path(@movie)
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@review.destroy
+		redirect_to movie_path(@movie)
+	end
+
 	private
 
 	def kamuthenya
@@ -25,5 +42,9 @@ class ReviewsController < ApplicationController
 
 	def kamuthenya_kafoca
 		@movie = Movie.find(params[:movie_id])
+	end
+
+	def november_is_gone
+		@review = Review.find(params[:id])
 	end
 end
