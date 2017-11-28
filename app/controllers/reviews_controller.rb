@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
 
 	def destroy
 		@review.destroy
-		redirect_to movie_path(@movie)
+		redirect_to movie_path(@movie )
 	end
 
 	private
