@@ -20,7 +20,7 @@ gem 'simple_form', '~> 3.5'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-rails'
 gem 'devise', '~> 4.3'
-gem 'paperclip', '~> 5.1'
+gem 'paperclip', '~> 5.2'
 
 
 group :development, :test do
